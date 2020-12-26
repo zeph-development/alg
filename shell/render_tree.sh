@@ -3,7 +3,6 @@
 # define ---
 render_line () {
 	line='____________________________________________________________________________________________________'
-	array=("$@")
 	for elem in ${array[@]}; do
 		line=$(echo $line | sed s/./1/$elem)
 	done
@@ -34,7 +33,7 @@ while [ "$step" -le "$limit" ]; do
 
 	render_line ${array[@]}
 
-	if [ "$counter" -eq "$((step))" ]; then
+	if [ "$counter" -eq "$step" ]; then
 		step=$((step*2))
 		counter=1
 	else
