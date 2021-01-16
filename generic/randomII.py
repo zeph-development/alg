@@ -26,3 +26,19 @@ print(number_of_carry_operation(1, 99999))
 print(number_of_carry_operation(999045, 1055))
 print(number_of_carry_operation(101, 809))
 print(number_of_carry_operation(189, 209))
+
+
+def contiguous_palindrome_count(text: str):
+    count = len(text)
+    for i, c in enumerate(text):
+        if i > 0:
+            if text[i - 1] == c:
+                count += 1
+                continue
+            if i > 1 and text[i - 2] == c:
+                count += 1
+    return count
+
+
+print(contiguous_palindrome_count("abbcbc"))
+print(contiguous_palindrome_count("axbcbc"))
