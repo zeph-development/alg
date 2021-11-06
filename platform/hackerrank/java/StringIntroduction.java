@@ -30,8 +30,8 @@ public class StringIntroduction {
         String largest = "";
         smallest = largest = s.substring(0, k);
 
-        for (int i=1; i<s.length()-k+1; i++) {
-            String substr = s.substring(i, i+k);
+        for (int i = 1; i < s.length() - k + 1; i++) {
+            String substr = s.substring(i, i + k);
             if (smallest.compareTo(substr) > 0)
                 smallest = substr;
             if (largest.compareTo(substr) < 0)
@@ -41,11 +41,27 @@ public class StringIntroduction {
         return smallest + "\n" + largest;
     }
 
+    private static boolean isPalindrome() {
+        Scanner sc = new Scanner(System.in);
+        String A = sc.next();
+        
+        int ALength = A.length();
+        boolean isPallindrome = true;
+        for (int i = 0, j = ALength - 1; i < ALength / 2; i++, j--) {
+            if (A.charAt(i) != A.charAt(j)) {
+                isPallindrome = false;
+            }
+        }
+
+        return isPallindrome;
+    }
+
     public static void main(String... args) {
         // compareStrings();
         // subString();
+        // System.out.println(subStringOrder("welcomeToJava", 3));
+        // isPalindrome()
+        System.out.println(isPalindrome());
 
-        System.out.println(subStringOrder("welcomeToJava", 3));
-    
     }
 }
