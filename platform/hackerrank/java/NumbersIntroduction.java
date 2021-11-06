@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-public class JavaI {
+public class NumbersIntroduction {
 
     private static String formatIndiaPayment(double value) {
         String pattern = "###,##0.00";
