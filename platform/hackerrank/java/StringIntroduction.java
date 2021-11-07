@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class StringIntroduction {
@@ -44,7 +45,7 @@ public class StringIntroduction {
     private static boolean isPalindrome() {
         Scanner sc = new Scanner(System.in);
         String A = sc.next();
-        
+
         int ALength = A.length();
         boolean isPallindrome = true;
         for (int i = 0, j = ALength - 1; i < ALength / 2; i++, j--) {
@@ -56,12 +57,26 @@ public class StringIntroduction {
         return isPallindrome;
     }
 
+    private static boolean isAnagram(String a, String b) {
+        if (a.length() != b.length()) {
+            return false;
+        }
+        a = a.toLowerCase();
+        b = b.toLowerCase();
+        
+        for (int i = 0; i < b.length(); i++) {
+            a = a.replaceFirst(String.valueOf(b.charAt(i)), "");
+        }
+
+        return a.isEmpty() ? true : false;
+    }
+
     public static void main(String... args) {
         // compareStrings();
         // subString();
         // System.out.println(subStringOrder("welcomeToJava", 3));
-        // isPalindrome()
-        System.out.println(isPalindrome());
+        // System.out.println(isPalindrome());
 
+        System.out.println(isAnagram("acb", "BaC"));
     }
 }
