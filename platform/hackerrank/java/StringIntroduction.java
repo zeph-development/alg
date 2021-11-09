@@ -1,4 +1,3 @@
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class StringIntroduction {
@@ -63,7 +62,7 @@ public class StringIntroduction {
         }
         a = a.toLowerCase();
         b = b.toLowerCase();
-        
+
         for (int i = 0; i < b.length(); i++) {
             a = a.replaceFirst(String.valueOf(b.charAt(i)), "");
         }
@@ -71,12 +70,34 @@ public class StringIntroduction {
         return a.isEmpty() ? true : false;
     }
 
+    private static void extractTokens() {
+        Scanner scan = new Scanner(System.in);
+        String s = scan.nextLine();
+        scan.close();
+
+        s = s.trim();
+        if (s == null || s.isEmpty()) {
+            System.out.print(0);
+            return;
+        }
+
+        s = s.replaceAll("[\\!\\?\\,\\.\\_\\'\\@]", " ");
+
+        String[] tokens = s.split(" +");
+
+        System.out.println(tokens.length);
+        for (String token : tokens) {
+            System.out.println(token);
+        }
+    }
+
     public static void main(String... args) {
+        
         // compareStrings();
         // subString();
         // System.out.println(subStringOrder("welcomeToJava", 3));
         // System.out.println(isPalindrome());
-
-        System.out.println(isAnagram("acb", "BaC"));
+        // System.out.println(isAnagram("acb", "BaC"));
+        extractTokens();
     }
 }
