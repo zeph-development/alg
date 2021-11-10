@@ -110,6 +110,42 @@ public class StringIntroduction {
         }
     }
 
+    static class MyRegex {
+        final String pattern = "^(([0-9]|[1-9][0-9]|[0-1][0-9][0-9]|2[0-4][0-9]|25[0-5])(\\.(?!$)|$)){4}$";
+
+        public MyRegex() {
+        }
+    }
+
+    private static void regexMatchIp() {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {
+            String IP = in.next();
+            System.out.println(IP.matches(new MyRegex().pattern));
+        }
+    }
+
+    private static void repeadedWords() {
+        String regex = "(\\b\\w+\\b)(\\s+\\1\\b)+";
+        Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+
+        Scanner in = new Scanner(System.in);
+        int numSentences = Integer.parseInt(in.nextLine());
+
+        while (numSentences-- > 0) {
+            String input = in.nextLine();
+            Matcher match = p.matcher(input);
+
+            while (match.find()) {
+                input = input.replaceAll(match.group(), match.group(1));
+            }
+
+            System.out.println(input);
+        }
+
+        in.close();
+    }
+
     public static void main(String... args) {
 
         // compareStrings();
@@ -118,6 +154,8 @@ public class StringIntroduction {
         // System.out.println(isPalindrome());
         // System.out.println(isAnagram("acb", "BaC"));
         // extractTokens();
-        compilePattern();
+        // compilePattern();
+        // regexMatchIp();
+        repeadedWords();
     }
 }
