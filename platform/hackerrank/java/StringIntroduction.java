@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 public class StringIntroduction {
 
@@ -91,13 +94,30 @@ public class StringIntroduction {
         }
     }
 
+    private static void compilePattern() {
+        Scanner in = new Scanner(System.in);
+        int testCases = Integer.parseInt(in.nextLine());
+
+        while (testCases-- > 0) {
+            String pattern = in.nextLine();
+            try {
+                Pattern.compile(pattern);
+            } catch (PatternSyntaxException e) {
+                System.out.println("Invalid");
+                continue;
+            }
+            System.out.println("Valid");
+        }
+    }
+
     public static void main(String... args) {
-        
+
         // compareStrings();
         // subString();
         // System.out.println(subStringOrder("welcomeToJava", 3));
         // System.out.println(isPalindrome());
         // System.out.println(isAnagram("acb", "BaC"));
-        extractTokens();
+        // extractTokens();
+        compilePattern();
     }
 }

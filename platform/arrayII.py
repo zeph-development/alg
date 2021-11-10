@@ -10,7 +10,6 @@ def rotate_left(a, d):
 array = [1, 2, 3, 4, 5]
 print(rotate_left(array, 9))
 
-
 # https://www.hackerrank.com/challenges/crush/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=arrays
 # Array Manipulation
 
