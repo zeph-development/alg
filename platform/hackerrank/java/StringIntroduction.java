@@ -146,6 +146,67 @@ public class StringIntroduction {
         in.close();
     }
 
+    private static class Solution {
+        private static final Scanner scan = new Scanner(System.in);
+
+        public static void main(String[] args) {
+            int n = Integer.parseInt(scan.nextLine());
+            while (n-- != 0) {
+                String userName = scan.nextLine();
+
+                if (userName.matches(UsernameValidator.regularExpression)) {
+                    System.out.println("Valid");
+                } else {
+                    System.out.println("Invalid");
+                }
+            }
+        }
+    }
+
+    private static class UsernameValidator {
+        public static final String regularExpression = "";
+    }
+
+    private static void usernameChecker() {
+        final Scanner scan = new Scanner(System.in);
+
+        int n = Integer.parseInt(scan.nextLine());
+        while (n-- != 0) {
+            String userName = scan.nextLine();
+
+            if (userName.matches(UsernameValidator.regularExpression)) {
+                System.out.println("Valid");
+            } else {
+                System.out.println("Invalid");
+            }
+        }
+    }
+
+    private static void innerHtmlTagsContent() {
+        Scanner in = new Scanner(System.in);
+        int testCases = Integer.parseInt(in.nextLine());
+        // int testCases = 1;
+
+        String regex = "<([^>]+)>([^<>]+)</\\1>";
+        Pattern pattern = Pattern.compile(regex);
+        
+        while (testCases > 0) {
+            String line = in.nextLine();
+            
+            Matcher matcher = pattern.matcher(line);
+            boolean findMatch = true;
+            
+            while(matcher.find()){
+                System.out.println(matcher.group(2));
+                findMatch = false;
+            } 
+            if(findMatch) {
+                System.out.println("None");
+            }
+            testCases--;
+        }
+    }
+
     public static void main(String... args) {
 
         // compareStrings();
@@ -156,6 +217,9 @@ public class StringIntroduction {
         // extractTokens();
         // compilePattern();
         // regexMatchIp();
-        repeadedWords();
+        // repeadedWords();
+
+        innerHtmlTagsContent();
+        
     }
 }
