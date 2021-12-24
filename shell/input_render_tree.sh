@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# For this script you will need to read from keyboard an input from 1 to 5 that will be the number of tree branches
+
 # define ---
 render_line () {
 	line='____________________________________________________________________________________________________'
