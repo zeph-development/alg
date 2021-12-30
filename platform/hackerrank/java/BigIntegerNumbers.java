@@ -14,6 +14,6 @@ public class BigIntegerNumbers {
         BigInteger product = new BigInteger(s[0]);
     
         System.out.println(sum.add(new BigInteger(s[1])));
-        System.out.println(sum.multiply(new BigInteger(s[1])));
+        System.out.println(product.multiply(new BigInteger(s[1])));
     }
 }
