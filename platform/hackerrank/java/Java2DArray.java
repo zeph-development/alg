@@ -10,7 +10,7 @@ import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
-//Page problem: https://www.hackerrank.com/challenges/java-2d-array/problem?isFullScreen=true
+//Page: https://www.hackerrank.com/challenges/java-2d-array/problem?isFullScreen=true
 
 public class Java2DArray {
     public static void main(String[] args) throws IOException {
