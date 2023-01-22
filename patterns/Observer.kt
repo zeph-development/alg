@@ -47,7 +47,7 @@ interface Listener {
 
 class GardenListener : Listener {
     override fun update(action: String) {
-        println("Garden listener $action\n")
+        println("Garden listener $action")
     }
 }
 
