@@ -10,16 +10,15 @@ public class TreeUtils {
     private static final ExecutorService executor = Executors.newFixedThreadPool(10);
     private static final AtomicInteger atomicHeight = new AtomicInteger(0);
 
-    public static Node buildTestTree() {
+    public static Node buildRandomLeafDataTree() {
         Node root = new Node();
         root.setNodes(new Node[]{new Node(), new Node(), new Node()});
 
         root.getNodes()[0].setNodes(new Node[]{new Node()});
-        root.getNodes()[0].getNodes()[0].setNodes(new Node[]{new Node()});
-        root.getNodes()[0].getNodes()[0].getNodes()[0].setLeafData("randomData(%f)".formatted(Math.random() * 100));
+        root.getNodes()[0].getNodes()[0].setLeaf("randomData(%f)".formatted(Math.random() * 100));
 
-        root.getNodes()[1].setLeafData("randomData(%f)".formatted(Math.random() * 100));
-        root.getNodes()[2].setLeafData("randomData(%f)".formatted(Math.random() * 100));
+        root.getNodes()[1].setLeaf("randomData(%f)".formatted(Math.random() * 100));
+        root.getNodes()[2].setLeaf("randomData(%f)".formatted(Math.random() * 100));
         return root;
     }
 
@@ -52,7 +51,7 @@ public class TreeUtils {
         int randomNodesSizePerLevel = 1 + (int) (random() * levelNodeLimit);
 
         if (currentHeight >= maxHeight) {
-            parentNode.setLeafData("randomData(%f)".formatted(random()));
+            parentNode.setLeaf("randomData(%f)".formatted(random()));
         } else {
             Node[] childNodes = new Node[randomNodesSizePerLevel];
             for (int i = 0; i < randomNodesSizePerLevel; i++) {
@@ -71,6 +70,24 @@ public class TreeUtils {
                 );
             }
         }
+    }
+
+    public static boolean compareTrees(Node node1, Node node2) {
+        if (node1 != null && node2 != null
+                && ((node1.getNodes() == null && node2.getNodes() == null)
+                || (node1.getNodes().length == node2.getNodes().length))) {
+
+            if (node1.getNodes() == null && node2.getNodes() == null) {
+                return node1.getLeaf().equals(node2.getLeaf());
+            }
+
+            boolean isEqual = true;
+            for (int i = 0; i < node1.getNodes().length; i++) {
+                isEqual &= compareTrees(node1.getNodes()[i], node2.getNodes()[i]);
+            }
+            return isEqual;
+        }
+        return false;
     }
 
     private static void waitForExecutorToFinish(int seconds) {

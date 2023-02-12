@@ -19,11 +19,11 @@ public class Node {
         this.nodes = nodes;
     }
 
-    public String getLeafData() {
+    public String getLeaf() {
         return leafData;
     }
 
-    public void setLeafData(String leafData) {
+    public void setLeaf(String leafData) {
         this.leafData = leafData;
     }
 }
