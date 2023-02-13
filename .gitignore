@@ -152,5 +152,5 @@ fabric.properties
 .history/
 
 *.class
-*.iml
 .vscode
+*.iml
