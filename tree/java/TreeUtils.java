@@ -1,7 +1,10 @@
+import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import org.w3c.dom.Node;
 
 import static java.lang.Math.random;
 
@@ -74,11 +77,12 @@ public class TreeUtils {
 
     public static boolean compareTrees(Node node1, Node node2) {
         if (node1 != null && node2 != null
-                && ((node1.getNodes() == null && node2.getNodes() == null)
-                || (node1.getNodes().length == node2.getNodes().length))) {
+            && (Objects.equals(node1.getNodes(), node2.getNodes())
+                || (node1.getNodes() != null && node2.getNodes() != null
+                    && node1.getNodes().length == node2.getNodes().length))) {
 
             if (node1.getNodes() == null && node2.getNodes() == null) {
-                return node1.getLeaf().equals(node2.getLeaf());
+                return Objects.equals(node1.getLeaf(), node2.getLeaf());
             }
 
             boolean isEqual = true;
