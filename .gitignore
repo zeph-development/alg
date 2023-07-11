@@ -154,3 +154,4 @@ fabric.properties
 *.class
 .vscode
 *.iml
+.DS_Store
