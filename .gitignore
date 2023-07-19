@@ -152,5 +152,6 @@ fabric.properties
 .history/
 
 *.class
-*.iml
 .vscode
+*.iml
+.DS_Store
