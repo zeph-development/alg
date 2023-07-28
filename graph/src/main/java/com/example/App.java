@@ -2,6 +2,8 @@ package com.example;
 
 import java.util.*;
 
+import static com.example.IncidenceMatrixToHashMapGraph.convertToHashMap;
+
 class DepthFirstTraversal {
     private final Map<String, String[]> graph;
 
@@ -133,6 +135,33 @@ class GraphIncidenceMatrixExample {
     }
 }
 
+class IncidenceMatrixToHashMapGraph {
+    public static Map<Integer, List<Integer>> convertToHashMap(int[][] incidenceMatrix) {
+        Map<Integer, List<Integer>> adjacencyList = new HashMap<>();
+
+        int numVertices = incidenceMatrix.length;
+        int numEdges = incidenceMatrix[0].length;
+
+        for (int vertex = 0; vertex < numVertices; vertex++) {
+            List<Integer> neighbors = new ArrayList<>();
+            for (int edge = 0; edge < numEdges; edge++) {
+                if (incidenceMatrix[vertex][edge] == 1) {
+                    // Find the other vertex connected by this edge
+                    for (int otherVertex = 0; otherVertex < numVertices; otherVertex++) {
+                        if (otherVertex != vertex && incidenceMatrix[otherVertex][edge] == 1) {
+                            neighbors.add(otherVertex);
+                            break;
+                        }
+                    }
+                }
+            }
+            adjacencyList.put(vertex, neighbors);
+        }
+
+        return adjacencyList;
+    }
+}
+
 
 public class App {
 
@@ -158,17 +187,26 @@ public class App {
 //        boolean isCycle = new DetectCycle(unidirectionalGraph).detectCycle();
 //        System.out.println(isCycle);
 
-        int numVertices = 4;
-        int numEdges = 5;
-        GraphIncidenceMatrixExample graph = new GraphIncidenceMatrixExample(numVertices, numEdges);
+//        int numVertices = 4;
+//        int numEdges = 5;
+//        GraphIncidenceMatrixExample graph = new GraphIncidenceMatrixExample(numVertices, numEdges);
+//
+//        graph.addEdge(0, 0, 1);
+//        graph.addEdge(1, 0, 2);
+//        graph.addEdge(2, 1, 2);
+//        graph.addEdge(3, 2, 3);
+//        graph.addEdge(4, 0, 3);
+//
+//        graph.printIncidenceMatrix();
 
-        graph.addEdge(0, 0, 1);
-        graph.addEdge(1, 0, 2);
-        graph.addEdge(2, 1, 2);
-        graph.addEdge(3, 2, 3);
-        graph.addEdge(4, 0, 3);
+        int[][] incidenceMatrix = {
+                {1, 1, 0, 1},
+                {0, 1, 1, 0},
+                {0, 0, 1, 1}
+        };
 
-        graph.printIncidenceMatrix();
+        Map<Integer, List<Integer>> adjacencyList = convertToHashMap(incidenceMatrix);
+        System.out.println(adjacencyList);
     }
 
 }
