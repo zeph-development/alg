@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -5,10 +6,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.lang.Math.random;
 
-public class TreeUtils {
+public class RandomTree {
 
     private static final ExecutorService executor = Executors.newFixedThreadPool(10);
     private static final AtomicInteger atomicHeight = new AtomicInteger(0);
+    private static final Random random = new Random();
 
     public static Node buildRandomLeafDataTree() {
         Node root = new Node();
@@ -39,11 +41,6 @@ public class TreeUtils {
 
     public static void generateRandomTree(Node root) {
         generateRandomBasicTree(root, 2, 3, atomicHeight.get());
-        waitForExecutorToFinish(5);
-    }
-
-    public static void generateRandomBinaryTree(Node root) {
-        generateRandomBasicTree(root, 2, 10, atomicHeight.get());
         waitForExecutorToFinish(5);
     }
 
@@ -97,5 +94,26 @@ public class TreeUtils {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        Node root = new Node();
+        generateRandomTree(root);
+        int maxDepth = maxDepth(root);
+        System.out.println(maxDepth);
+
+        root = new Node();
+
+        System.out.println(root);
+
+        root = new Node();
+        generateRandomTree(root);
+        System.out.println(root);
+
+        Node rootSameTree1 = buildRandomLeafDataTree();
+        Node rootSameTree2 = buildRandomLeafDataTree();
+
+        boolean isEqual = compareTrees(rootSameTree1, rootSameTree2);
+        System.out.println(isEqual);
     }
 }
