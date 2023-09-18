@@ -16,5 +16,15 @@
     <dependencies>
         <!-- Add any additional dependencies here if needed -->
     </dependencies>
-</project>
 
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>config</directory>
+            </resource>
+        </resources>
+    </build>
+</project>
