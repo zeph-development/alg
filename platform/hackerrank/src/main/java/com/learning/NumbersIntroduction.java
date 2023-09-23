@@ -1,3 +1,5 @@
+package com.learning;
+
 import java.util.Locale;
 import java.util.Scanner;
 import java.text.DecimalFormat;

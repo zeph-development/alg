@@ -1,3 +1,5 @@
+package com.learning;
+
 import java.util.Scanner;
 
 //Page: https://www.hackerrank.com/challenges/java-arraylist/problem?isFullScreen=true
