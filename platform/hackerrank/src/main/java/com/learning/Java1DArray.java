@@ -29,7 +29,7 @@ public class Java1DArray {
     return canWin(leap, game, 0);
   }
 
-  public static void main(String[] args) {
+  public static void diffOutputTest(){
     String inputFilePath = "/java1DArray.txt";
     String compareFilePath = "/java1DCompare.txt";
     String outputFilePath = "java1DArray_output.txt";
@@ -51,6 +51,7 @@ public class Java1DArray {
 
       Stack<String> stack = new Stack<String>();
       String line;
+      
       for (int i = 1; (line = reader.readLine()) != null; i++) {
         stack.push(line);
 
@@ -61,12 +62,7 @@ public class Java1DArray {
             .toArray();
 
           String[] sizeAndLeap = stack.pop().split(" ");
-          int size = Integer.parseInt(sizeAndLeap[0]);
           int leap = Integer.parseInt(sizeAndLeap[1]);
-
-          if (size == 84 && leap == 14) {
-            // System.out.println("DEBUG");
-          }
 
           String result = (canWin(game, leap)) ? "YES" : "NO";
           String compareResult = compareReader.readLine();
@@ -81,5 +77,9 @@ public class Java1DArray {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  public static void main(String[] args) {
+    diffOutputTest();
   }
 }
